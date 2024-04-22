@@ -8,7 +8,7 @@ import org.slf4j.LoggerFactory;
 import net.datafaker.Faker;
 
 public class GenerateLinesTest {
-    // some comment
+    // some comment updated
     // another one
     private Logger log = LoggerFactory.getLogger(getClass());
     
