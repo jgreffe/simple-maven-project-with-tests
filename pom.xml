@@ -11,6 +11,7 @@
             <url>http://opensource.org/licenses/MIT</url>
         </license>
     </licenses>
+    <!-- a comment -->
     <build>
         <plugins>
             <plugin>
