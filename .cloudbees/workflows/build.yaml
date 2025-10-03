@@ -22,7 +22,7 @@ jobs:
         uses: cloudbees-io/configure-git-global-credentials@v1
       - name: Run tests
         kind: test
-        uses: docker://maven:eclipse-temurin-21-alpine
+        uses: docker://maven:3-eclipse-temurin-21-alpine
         run: |
           set -x
           cd simple-maven-project-with-tests
