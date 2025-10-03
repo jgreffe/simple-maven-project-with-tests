@@ -10,7 +10,7 @@ permissions:
 on:
   push:
     branches:
-      - "main"
+      - "master"
       - "**"
 
   # We do not build pull requests to avoid potential security issues.
