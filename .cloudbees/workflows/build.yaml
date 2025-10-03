@@ -31,5 +31,5 @@ jobs:
         kind: test
         uses: cloudbees-io/publish-test-results@v2
         with:
-          test-type: JAVA
+          test-type: junit
           results-path: ./tmp/test-reports
