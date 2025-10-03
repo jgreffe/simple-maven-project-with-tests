@@ -1,0 +1,41 @@
+apiVersion: automation.cloudbees.io/v1alpha1
+kind: workflow
+name: Simple Maven Project With Tests
+
+permissions:
+  scm-token-own: read
+  scm-token-org: read
+  id-token: read
+
+on:
+  push:
+    branches:
+      - "main"
+      - "**"
+
+  # We do not build pull requests to avoid potential security issues.
+
+jobs:
+  build:
+    steps:
+      - name: Checkout repository
+        uses: cloudbees-io/checkout@v1
+        with:
+          path: simple-maven-project-with-tests
+      - name: Setup git credentials
+        uses: cloudbees-io/configure-git-global-credentials@v1
+
+      - name: Run tests
+        kind: test
+        uses: docker://maven:eclipse-temurin-21-alpine
+        run: |
+          set -x
+          cd simple-maven-project-with-tests
+          mvn test
+
+      - name: Publish test results
+        kind: test
+        uses: cloudbees-io/publish-test-results@v2
+        with:
+          test-type: JAVA
+          results-path: ./tmp/test-reports
