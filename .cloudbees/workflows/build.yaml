@@ -29,7 +29,8 @@ jobs:
           mvn -B -ntp test
       - name: Publish test results
         kind: test
+        if: ${{always()}}
         uses: cloudbees-io/publish-test-results@v2
         with:
           test-type: junit
-          results-path: ./tmp/test-reports
+          results-path: ./target/surefire-reports/
